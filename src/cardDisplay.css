@@ -1,0 +1,86 @@
+/* src/styles/App.css */
+
+body {
+
+  }
+  
+  .card-display {
+    perspective: 1000px; /* Create 3D space for flip effect */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #f7e9dd;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .card-inner {
+    width: 300px;
+    height: 400px;
+    position: relative;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+  }
+  
+  .card-display:hover .card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  }
+  
+  .card-front {
+    background-color: #ffde7d;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .card-front img {
+    width: 80%;
+    height: auto;
+    border: 3px solid #000000;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .card-front h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #555;
+  }
+  
+  .card-front h2 {
+    margin: 10px 0 0;
+    font-size: 20px;
+    color: #333;
+  }
+  
+  .card-back {
+    background-color: #f05454;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotateY(180deg); /* Make the back initially hidden */
+    border-radius: 15px;
+  }
+  
+  .card-back h2 {
+    margin: 0;
+    font-size: 28px;
+    text-align: center;
+  }
+  
