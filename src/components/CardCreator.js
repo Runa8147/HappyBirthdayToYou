@@ -11,23 +11,25 @@ function CardCreator() {
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const uniqueId = uuidv4();
-      const { data, error } = await supabase
-        .from('cards1')
-        .insert([{ template, image_url: imageUrl, name, message, unique_id: uniqueId }])
-        .select();
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const uniqueId = uuidv4();
+    const { data, error } = await supabase
+      .from('cards1')
+      .insert([{ template, image_url: imageUrl, name, message, unique_id: uniqueId }])
+      .select();
 
-      if (error) throw error;
+    if (error) throw error;
 
-      navigate(`/my-cards`);
-      alert(`Card created successfully! Shareable link: ${window.location.origin}/share/${uniqueId}`);
-    } catch (error) {
-      console.error('Error creating card:', error);
-    }
-  };
+    console.log('Card created successfully:', data);  // Use the data variable
+
+    navigate(`/my-cards`);
+    alert(`Card created successfully! Shareable link: ${window.location.origin}/share/${uniqueId}`);
+  } catch (error) {
+    console.error('Error creating card:', error);
+  }
+};
 
   return (
     <div className="card-creator">
